@@ -1,0 +1,20 @@
+version: '3'  # version of docker compose
+
+services:
+  myservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      VIRTUAL_HOST: "m"
+    expose:
+      - "80"  # open a port
+    deploy:
+      replicas: 4
+
+  loadbalancer:
+    image: jwilder/nginx-proxy
+    ports:
+      - "8080:80"  # bind a port
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
