@@ -26,6 +26,5 @@ RUN mvn install:install-file -Dfile=./lib/opencv-3410.jar \
 # Pour compiler
 RUN mvn package
 
-EXPOSE 8080
 ## Si vous avez une version récente, il se peut qu'il faille utiliser, si aucune des deux versions ne marchent, recompiler opencv ou faites la tourner dans un container avec une image de docker *ubuntu:16.04*
 CMD java -Djava.library.path=lib/ubuntuupperthan18/ -jar target/fatjar-0.0.1-SNAPSHOT.jardocker
